@@ -28,4 +28,10 @@ class MovieDetailsViewController: UIViewController {
         posterView.af.setImage(withURL: movie.posterURL!)
         backdropView.af.setImage(withURL: movie.backdropURL!)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let tailorViewController = segue.destination as! TailorViewController
+        
+        tailorViewController.movieID = movie.id
+    }
 }

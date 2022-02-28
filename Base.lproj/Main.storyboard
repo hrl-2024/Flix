@@ -3,6 +3,7 @@
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -116,6 +117,17 @@
                                     <constraint firstAttribute="width" constant="102" id="Sm4-Ch-4ZO"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Pm-DV-ys7">
+                                <rect key="frame" x="16" y="176" width="102" height="143"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="play.circle" catalog="system" symbolScale="large"/>
+                                </state>
+                                <connections>
+                                    <segue destination="2K5-ZX-DF6" kind="presentation" identifier="tailorSegue" id="gYk-qY-Ag1"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tSq-AZ-lfA">
                                 <rect key="frame" x="126" y="259" width="248" height="24"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
@@ -134,10 +146,14 @@
                         <constraints>
                             <constraint firstItem="08X-Ma-VUS" firstAttribute="trailing" secondItem="hWB-6K-3vf" secondAttribute="trailing" id="0Nu-xZ-uwB"/>
                             <constraint firstItem="tSq-AZ-lfA" firstAttribute="top" secondItem="08X-Ma-VUS" secondAttribute="bottom" constant="8" symbolic="YES" id="Fmj-Ml-xiH"/>
+                            <constraint firstItem="2Pm-DV-ys7" firstAttribute="bottom" secondItem="kDs-66-UEO" secondAttribute="bottom" id="NnC-YL-Z2y"/>
                             <constraint firstItem="kDs-66-UEO" firstAttribute="leading" secondItem="08X-Ma-VUS" secondAttribute="leading" constant="16" id="P9L-lj-hUF"/>
                             <constraint firstItem="08X-Ma-VUS" firstAttribute="top" secondItem="nhD-DU-CHY" secondAttribute="top" id="Q8V-N1-6vd"/>
+                            <constraint firstItem="2Pm-DV-ys7" firstAttribute="top" secondItem="kDs-66-UEO" secondAttribute="top" id="QQx-ye-hYP"/>
+                            <constraint firstItem="2Pm-DV-ys7" firstAttribute="trailing" secondItem="kDs-66-UEO" secondAttribute="trailing" id="Ray-yv-ezL"/>
                             <constraint firstItem="tSq-AZ-lfA" firstAttribute="trailing" secondItem="owt-wm-Qyg" secondAttribute="trailing" id="Ufd-mh-tvc"/>
                             <constraint firstItem="kDs-66-UEO" firstAttribute="leading" secondItem="owt-wm-Qyg" secondAttribute="leading" id="ZdP-wt-01w"/>
+                            <constraint firstItem="2Pm-DV-ys7" firstAttribute="leading" secondItem="kDs-66-UEO" secondAttribute="leading" id="aFk-iB-cV2"/>
                             <constraint firstItem="kDs-66-UEO" firstAttribute="top" secondItem="hWB-6K-3vf" secondAttribute="top" constant="88" id="ayt-Yu-qbk"/>
                             <constraint firstItem="tSq-AZ-lfA" firstAttribute="trailing" secondItem="nhD-DU-CHY" secondAttribute="trailingMargin" id="eQ2-X5-5kg"/>
                             <constraint firstItem="08X-Ma-VUS" firstAttribute="leading" secondItem="hWB-6K-3vf" secondAttribute="leading" id="rYb-ul-otx"/>
@@ -156,7 +172,33 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2jX-p3-Mlw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-855" y="2922"/>
+            <point key="canvasLocation" x="-855.38461538461536" y="2921.8009478672984"/>
+        </scene>
+        <!--Tailor View Controller-->
+        <scene sceneID="CnN-hO-1bg">
+            <objects>
+                <viewController id="2K5-ZX-DF6" customClass="TailorViewController" customModule="Flix" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FmO-SD-AzL">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UHK-kz-OM8">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="9Aq-Ig-IKQ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Bz-4r-zoe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="44.615384615384613" y="2921.8009478672984"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="kL8-t8-ytz">
@@ -277,6 +319,7 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="now_playing_tabbar_item" width="21" height="21"/>
+        <image name="play.circle" catalog="system" width="128" height="121"/>
         <image name="superhero_tabbar_item" width="21" height="23"/>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
