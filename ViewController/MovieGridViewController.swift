@@ -10,17 +10,17 @@ import AlamofireImage
 
 class MovieGridViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var MovieCollectionView: UICollectionView!
     
     var movies = [Movie]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView.delegate = self
-        collectionView.dataSource = self
+        MovieCollectionView.delegate = self
+        MovieCollectionView.dataSource = self
 
-        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        let layout = MovieCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.minimumLineSpacing = 4  // set the line spacing in btw the rolls
         layout.minimumInteritemSpacing = 4
         
@@ -46,7 +46,21 @@ class MovieGridViewController: UIViewController, UICollectionViewDelegate, UICol
         return cell
     }
     
-    // ––––– TODO: Get data from API helper and retrieve restaurants
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let cell = sender as! UICollectionViewCell
+        
+        if let indexPath = MovieCollectionView.indexPath(for: cell) {
+            
+            let movie = movies[indexPath.item]
+            
+            let detailsViewController = segue.destination as! SuperheroMovieDetailViewController
+            detailsViewController.movie = movie
+        }
+    }
+    
+    
+    // Helper function: Get data from API helper and retrieve restaurants
     func getAPIData() {
         
         let APIURL = "https://api.themoviedb.org/3/movie/634649/similar?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed"
@@ -57,7 +71,7 @@ class MovieGridViewController: UIViewController, UICollectionViewDelegate, UICol
                 return
             }
             self.movies = movie
-            self.collectionView.reloadData()
+            self.MovieCollectionView.reloadData()
         }
     }
 }

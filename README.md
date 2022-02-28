@@ -17,6 +17,10 @@ Flix is an app that allows users to browse movies from the [The Movie Database A
 ### App Walkthrough GIF
 <img src="https://i.imgur.com/g922paJ.gif" width=250><br>
 
+For bonus: <br>
+<img src="https://i.imgur.com/sQtmmMe.gif" width=250><br>
+
+
 ### Notes
 Describe any challenges encountered while building the app.
 Cleaning up code. Setting up a reusable Movie model to make the code cleaner. Since superhero tab uses different API, force wrapping backdrop_url results in signal abort. Spent sometime to figure out this bug and fix it.
