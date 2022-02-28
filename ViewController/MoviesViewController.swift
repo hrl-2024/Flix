@@ -11,7 +11,7 @@ import AlamofireImage
 class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // properties
-    var movies = [[String : Any]]()   // create, using constructor, an array of dictionary with key type String and value type of Any
+    var movies = [Movie]()   // create by using constructor
 
     @IBOutlet weak var MovieTableView: UITableView!
     
@@ -35,32 +35,41 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         // setting the text
         let movie = movies[indexPath.row]
-        let title = movie["title"] as! String
-        let synopsis = movie["overview"] as! String
-        cell.titleLabel.text = title
-        cell.synopsisLabel.text = synopsis
         
-        // adding poster images
-        let baseUrl = "https://image.tmdb.org/t/p/w185"
-        let posterPath = movie["poster_path"] as! String
-        let posterURL = URL(string: baseUrl + posterPath)
-        
-        cell.posterView.af.setImage(withURL: posterURL!)
+        cell.movie = movie
         
         return cell
     }
 
     // ––––– TODO: Get data from API helper and retrieve restaurants
     func getAPIData() {
-        API.getMovies() { (movie) in
+        
+        let APIURL = "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed"
+        
+        API.getMovies(with: APIURL) { (movie) in
             guard let movie = movie else {
                 // make sure movies is not empty
                 return
             }
-            print(movie)
             self.movies = movie
             self.MovieTableView.reloadData() // reloading the data
         }
     }
+    
+    // sender: the cell that was tapped on
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        // Find the selected movie
+        let cell = sender as! UITableViewCell
+        if let indexPath = MovieTableView.indexPath(for: cell) {
+            let movie = movies[indexPath.row]
+            
+            // pass the selected movie to the MovieDetailsViewController
+            let detailsViewController = segue.destination as! MovieDetailsViewController
+            detailsViewController.movie = movie
+            
+            // deselect the row
+            MovieTableView.deselectRow(at: indexPath, animated: true)
+        }
+    }
 }
-
