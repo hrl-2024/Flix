@@ -21,7 +21,7 @@ For bonus 1: <br>
 <img src="https://i.imgur.com/sQtmmMe.gif" width=250><br>
 
 For bonus 2: <br>
-<img src="https://i.imgur.com/NZhMFjG.gif" width=250><br>
+<img src="https://i.imgur.com/hK79CtK.gif" width=250><br>
 
 
 ### Notes
