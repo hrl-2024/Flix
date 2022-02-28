@@ -54,7 +54,7 @@ class MovieGridViewController: UIViewController, UICollectionViewDelegate, UICol
             
             let movie = movies[indexPath.item]
             
-            let detailsViewController = segue.destination as! SuperheroMovieDetailViewController
+            let detailsViewController = segue.destination as! MovieDetailsViewController
             detailsViewController.movie = movie
         }
     }
