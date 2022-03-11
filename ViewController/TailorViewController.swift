@@ -51,14 +51,12 @@ class TailorViewController: UIViewController, WKUIDelegate {
                     // TODO: Get the Youtube Key and Store it
                     self.youtubeKey = (movie[0]["key"] as! String)
                  
-                    print("Youtube Key is: " + (self.youtubeKey ?? "No_Key"))
-                 
                     let YouTubeURL = "https://www.youtube.com/watch?v=" + (self.youtubeKey ?? "NO_KEY")
                     print(YouTubeURL)
                  
-                     // displaying website onscreen:
-                     let myURL = URL(string:YouTubeURL)
-                     let myRequest = URLRequest(url: myURL!)
+                    // displaying website onscreen:
+                    let myURL = URL(string:YouTubeURL)
+                    let myRequest = URLRequest(url: myURL!)
                     self.webView.load(myRequest)
              }
         }
